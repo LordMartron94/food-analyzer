@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'FoodAnalyzer\\' => array('/src'),
+    'FoodAnalyzer\\' => array($baseDir . '/src'),
 );

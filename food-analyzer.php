@@ -3,9 +3,8 @@
  * Plugin Name: The Best Food Analyzer in Existence!
  */
 
-use FoodAnalyzer\Loader\Init;
+use FoodAnalyzer\Init;
 
 require_once "vendor/autoload.php";
 
-$init = new Init();
-$init->run();
+new Init();

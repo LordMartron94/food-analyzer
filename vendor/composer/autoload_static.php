@@ -16,7 +16,7 @@ class ComposerStaticInit8ee169473c8e82a47aa0079c49590bf8
     public static $prefixDirsPsr4 = array (
         'FoodAnalyzer\\' => 
         array (
-            0 => '/src',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

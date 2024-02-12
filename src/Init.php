@@ -1,10 +1,9 @@
-<?php namespace FoodAnalyzer\Loader;
+<?php namespace FoodAnalyzer;
 
 class Init
 {
     public function __construct()
     {
-//        exit("Lord of Lords");
 
     }
 
