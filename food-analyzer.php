@@ -7,4 +7,7 @@ use FoodAnalyzer\Init;
 
 require_once "vendor/autoload.php";
 
-new Init();
+//new Init();
+
+echo "Tobias";
+//exit();
