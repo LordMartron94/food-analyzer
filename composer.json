@@ -1,0 +1,24 @@
+{
+  "name": "mr_hoorn/food-analyzer",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Matthew David van der Hoorn",
+      "email": "md.career@protonmail.com"
+    },
+    {
+      "name": "Tobias Schutter",
+      "email": "tobias@codepress.nl"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "FoodAnalyzer\\": "/src"
+    }
+  },
+  "require": {
+
+  }
+}
