@@ -22,7 +22,7 @@ class CreateDatabaseScheme implements IRequestHandler
 
     public function handle(Request $request): Response
     {
-        return new Response('succes');
+        return new Response('success');
     }
 
 }

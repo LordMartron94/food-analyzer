@@ -14,7 +14,7 @@ class Request
         $this->data = $_GET;
     }
 
-    public function get(string $var)
+    public function get(string $var):mixed
     {
         return $this->data[$var] ?? null;
     }
