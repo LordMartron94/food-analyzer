@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace FoodAnalyzer\RequestHandler;
 
 use FoodAnalyzer\Request;
-use FoodAnalyzer\RequestHandler;
+use FoodAnalyzer\IRequestHandler;
 use FoodAnalyzer\Response;
 
-class CreateDatabaseScheme implements RequestHandler
+class CreateDatabaseScheme implements IRequestHandler
 {
 
     public function __construct()

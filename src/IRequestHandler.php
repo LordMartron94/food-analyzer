@@ -2,7 +2,7 @@
 
 namespace FoodAnalyzer;
 
-interface RequestHandler
+interface IRequestHandler
 {
 
     public function handle(Request $request): Response;
