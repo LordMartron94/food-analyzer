@@ -7,51 +7,30 @@ use InvalidArgumentException;
 
 class ColumnFactory
 {
-    private bool $_autoFixColumnName;
 
-    public function __construct(bool $autoFixColumnName = true)
+    public function createVarChar(string $columnName, int $charValue): Column
     {
-        $this->_autoFixColumnName = $autoFixColumnName;
+        return new Column(
+            $columnName,
+            "varchar($charValue)"
+        );
     }
 
-    private function _ValidateColumnName(string $columnName): string
+    public function createFloat(string $columnName): Column
     {
-        if (empty($columnName) && !$this->_autoFixColumnName)
-            throw new InvalidArgumentException("Column name cannot be empty!");
-        else if (empty($columnName))
-            return "a";
-        if (!$this->_autoFixColumnName && str_contains($columnName, ' '))
-            throw new InvalidArgumentException("Column name cannot contain whitespace characters.");
-        else if (str_contains($columnName, ' '))
-            return str_replace(' ', '_', $columnName);
-        return $columnName;
-    }
-
-    public function CreateVarChar(string $columnName, int $charValue): Column
-    {
-        $name = $this->_ValidateColumnName($columnName);
-        $type = "varchar($charValue)";
-        return new Column($name, $type);
-    }
-
-    public function CreateFloat(string $columnName): Column
-    {
-        $name = $this->_ValidateColumnName($columnName);
-        $type = "float";
-        return new Column($name, $type);
+        return new Column(
+            $columnName,
+            "float"
+        );
     }
 
     public function CreateInt(string $columnName): Column
     {
-        $name = $this->_ValidateColumnName($columnName);
-        $type = "int";
-        return new Column($name, $type);
+        return new Column($columnName, "int");
     }
 
     public function CreateBool(string $columnName): Column
     {
-        $name = $this->_ValidateColumnName($columnName);
-        $type = "bool";
-        return new Column($name, $type);
+        return new Column($columnName, "bool");
     }
 }

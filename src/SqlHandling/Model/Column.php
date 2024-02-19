@@ -2,24 +2,40 @@
 
 namespace FoodAnalyzer\SqlHandling\Model;
 
+use InvalidArgumentException;
+
 class Column
 {
-    private string $_columnName;
-    private string $_columnType;
+
+    private string $columnName;
+
+    private string $columnType;
 
     public function __construct(string $columnName, string $columnType)
     {
-        $this->_columnName = $columnName;
-        $this->_columnType = $columnType;
+        $this->columnName = $columnName;
+        $this->columnType = $columnType;
+
+        $this->validate();
+    }
+
+    private function validate():void
+    {
+        if ( '' === $this->columnName) {
+            throw new InvalidArgumentException("Column name cannot be empty.");
+        }
+        if (str_contains($this->columnName, ' ')) {
+            throw new InvalidArgumentException("Column name cannot contain whitespace characters.");
+        }
     }
 
     public function getColumnName(): string
     {
-        return $this->_columnName;
+        return $this->columnName;
     }
 
     public function getColumnType(): string
     {
-        return $this->_columnType;
+        return $this->columnType;
     }
 }
