@@ -15,22 +15,33 @@ class IngredientRepository
 
     private function _table_query(array $columns): string
     {
-        $query = "CREATE TABLE mdvdh_ingredients";
+        $query = "CREATE TABLE mdvdh_ingredients (";
 
+        $definitions = [];
+
+        // Extracting first column
+        $firstCol = array_shift($columns);
+        $pkName = $firstCol->getColumnName();
+        $pkType = $firstCol->getColumnType();
+        $definitions[] = "$pkName $pkType PRIMARY KEY";
+
+        // Adding the rest columns
         foreach ($columns as $column)
         {
             $name = $column->getColumnName();
             $type = $column->getColumnType();
-            $query .= "\n$name $type,";
+            $definitions[] = "$name $type";
         }
+
+        $query .= "\n" . implode(",\n", $definitions);
+        $query .= "\n);";
 
         return $query;
     }
 
-    public function initialize()
+    public function initialize(): void
     {
-//        global $wpdb;
-//        $wpdb->query();
+        global $wpdb;
 
         $columns = [
             $this->_columnFactory->CreateInt("IngredientID"),
@@ -71,7 +82,12 @@ class IngredientRepository
             $this->_columnFactory->CreateVarChar("Source", 100)
         ];
 
-        return $this->_table_query($columns);
+        $query = $this->_table_query($columns);
+        $queryResult = $wpdb->query($query);
+
+        echo '<pre>'; print_r( $query ); echo '</pre>';
+        echo '<pre>'; print_r( $queryResult ); echo '</pre>';
+        echo '<pre>'; print_r( $wpdb->last_error ); echo '</pre>'; exit;
     }
 
     public function save()

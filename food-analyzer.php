@@ -5,6 +5,7 @@
 
 use FoodAnalyzer\IngredientRepository;
 use FoodAnalyzer\Init;
+use FoodAnalyzer\SqlHandling\ColumnFactory;
 use FoodAnalyzer\SqlHandling\Model\Column;
 
 require_once "vendor/autoload.php";
@@ -12,11 +13,8 @@ require_once "vendor/autoload.php";
 //new Init();
 //exit();
 
-//$repo = new IngredientRepository();
-$factory = new \FoodAnalyzer\SqlHandling\ColumnFactory();
-
-$column = $factory->CreateVarChar("", 255);
-
-echo $column->getColumnName() . " " . $column->getColumnType();
-
-//echo $repo->initialize($columns);
+add_action('admin_init', static function (){
+    $factory = new ColumnFactory();
+    $repo = new IngredientRepository($factory);
+    $repo->initialize();
+});

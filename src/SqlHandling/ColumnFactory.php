@@ -20,7 +20,7 @@ class ColumnFactory
             throw new InvalidArgumentException("Column name cannot be empty!");
         else if (empty($columnName))
             return "a";
-        if (str_contains($columnName, ' ') && !$this->_autoFixColumnName)
+        if (!$this->_autoFixColumnName && str_contains($columnName, ' '))
             throw new InvalidArgumentException("Column name cannot contain whitespace characters.");
         else if (str_contains($columnName, ' '))
             return str_replace(' ', '_', $columnName);

@@ -51,5 +51,11 @@ wp-config.php
 /.idea
 node_modules
 
+composer.phar
+
 # OS X
 .DS_Store
+
+# VALE
+.vale.ini
+vale.exe
